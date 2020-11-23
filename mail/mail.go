@@ -27,7 +27,7 @@ type Message struct {
 	BodyPlain string `json:"body_plain"`
 }
 
-func GetMessagesByInbox(inbox *Inbox) []*Message {
+func (inbox *Inbox) GetMessages() []*Message {
 	request, err := http.NewRequest("GET", api + "inbox/" + inbox.Id + "/messages", bytes.NewBuffer([]byte{}))
 	if err != nil {
 		fmt.Println("Error whilst creating a new request: ", err)
